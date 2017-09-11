@@ -12,6 +12,7 @@ public class SplashActivity extends AppCompatActivity {
 
         System.out.println("hihihih");
 
+        System.out.println("hahahahah");
 
     }
 }
