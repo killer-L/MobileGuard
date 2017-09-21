@@ -31,7 +31,7 @@ import cn.edu.gdmec.android.mobileguard.m1home.entity.VersionEntity;
 
 public class VersionUpdateUtils {
     private String mVersion;
-    private Activity context; 
+    private Activity context;
     private VersionEntity versionEntity;
 
     private static final int MESSAGE_IO_ERROR = 102;
