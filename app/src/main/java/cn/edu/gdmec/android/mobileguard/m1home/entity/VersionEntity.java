@@ -10,5 +10,5 @@ public class VersionEntity {
     /**版本描述**/
     public String description;
     /**apk下载地址**/
-    public String apkurl; 
+    public String apkurl;
 }
