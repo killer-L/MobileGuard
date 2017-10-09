@@ -13,6 +13,7 @@ import android.widget.Toast;
 import cn.edu.gdmec.android.mobileguard.R;
 
 import cn.edu.gdmec.android.mobileguard.m1home.adapter.HomeAdapter;
+import cn.edu.gdmec.android.mobileguard.m2theftguard.dialog.InterPasswordDialog;
 import cn.edu.gdmec.android.mobileguard.m2theftguard.dialog.SetupPasswordDialog;
 import cn.edu.gdmec.android.mobileguard.m2theftguard.utils.MD5Utils;
 
@@ -114,6 +115,28 @@ public class HomeActivity extends AppCompatActivity {
     */
     private void showInterPswdDialog(){
         final String password = getPassword();
+        final InterPasswordDialog mInPswdDialog = new InterPasswordDialog(HomeActivity.this);
+        mInPswdDialog.setCallBack(new InterPasswordDialog.MyCallBack(){
+            @Override
+            public void confirm() {
+                if(TextUtils.isEmpty(mInPswdDialog.getPassword())){
+                    Toast.makeText(HomeActivity.this,"密码不能为空", 0).show();
+                }else if (password.equals(MD5Utils.encode(mInPswdDialog.getPassword()))){
+                    mInPswdDialog.dismiss();
+                    Toast.makeText(HomeActivity.this,"允许进入手机防盗模块", Toast.LENGTH_LONG).show();
+                }else{
+                    mInPswdDialog.dismiss();
+                    Toast.makeText(HomeActivity.this,"密码有误请重新输入", 0).show();
+                }
+            }
+
+            @Override
+            public void cancel() {
+                mInPswdDialog.dismiss();
+            }
+        });
+        mInPswdDialog.setCancelable(true);
+        mInPswdDialog.show();
     }
 
     /*
