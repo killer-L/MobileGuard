@@ -1,5 +1,4 @@
 package cn.edu.gdmec.android.mobileguard.m1home;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
@@ -13,6 +12,7 @@ import android.widget.Toast;
 import cn.edu.gdmec.android.mobileguard.R;
 
 import cn.edu.gdmec.android.mobileguard.m1home.adapter.HomeAdapter;
+import cn.edu.gdmec.android.mobileguard.m2theftguard.LostFindActivity;
 import cn.edu.gdmec.android.mobileguard.m2theftguard.dialog.InterPasswordDialog;
 import cn.edu.gdmec.android.mobileguard.m2theftguard.dialog.SetupPasswordDialog;
 import cn.edu.gdmec.android.mobileguard.m2theftguard.utils.MD5Utils;
@@ -70,7 +70,7 @@ public class HomeActivity extends AppCompatActivity {
 
     //判断用户是否设置过手机防盗密码
     private boolean isSetupPassword(){
-        String password = mSharedPreferences.getString("PhoneAntiThreftPWD",null);
+        String password = mSharedPreferences.getString("PhoneAntiTheftPWD",null);
         if(TextUtils.isEmpty(password)){
             return false;
         }else {
@@ -120,13 +120,14 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void confirm() {
                 if(TextUtils.isEmpty(mInPswdDialog.getPassword())){
-                    Toast.makeText(HomeActivity.this,"密码不能为空", 0).show();
+                    Toast.makeText(HomeActivity.this,"密码不能为空",Toast.LENGTH_LONG).show();
                 }else if (password.equals(MD5Utils.encode(mInPswdDialog.getPassword()))){
                     mInPswdDialog.dismiss();
+                    startActivity(LostFindActivity.class);
                     Toast.makeText(HomeActivity.this,"允许进入手机防盗模块", Toast.LENGTH_LONG).show();
                 }else{
                     mInPswdDialog.dismiss();
-                    Toast.makeText(HomeActivity.this,"密码有误请重新输入", 0).show();
+                    Toast.makeText(HomeActivity.this,"密码有误请重新输入",Toast.LENGTH_LONG).show();
                 }
             }
 
