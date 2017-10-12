@@ -10,12 +10,11 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.Toast;
-
 import cn.edu.gdmec.android.mobileguard.R;
+
 import cn.edu.gdmec.android.mobileguard.m1home.adapter.HomeAdapter;
-import cn.edu.gdmec.android.mobileguard.m2theftguard.LostFindActivity;
 import cn.edu.gdmec.android.mobileguard.m2theftguard.dialog.InterPasswordDialog;
-import cn.edu.gdmec.android.mobileguard.m2theftguard.dialog.SetUpPasswordDialog;
+import cn.edu.gdmec.android.mobileguard.m2theftguard.dialog.SetupPasswordDialog;
 import cn.edu.gdmec.android.mobileguard.m2theftguard.utils.MD5Utils;
 
 
@@ -38,8 +37,10 @@ public class HomeActivity extends AppCompatActivity {
                 switch (i){
                     case 0:
                         if(isSetupPassword()){
+                            //打开设置密码对话框
                             showInterPswdDialog();
                         }else {
+                            //打开输入密码对话框
                             showSetupPswdDialog();
                         }
                         break;
@@ -67,8 +68,9 @@ public class HomeActivity extends AppCompatActivity {
         return super.onKeyDown(keyCode, event);
     }
 
+    //判断用户是否设置过手机防盗密码
     private boolean isSetupPassword(){
-        String password = mSharedPreferences.getString("PhoneAntiTheftPWD",null);
+        String password = mSharedPreferences.getString("PhoneAntiThreftPWD",null);
         if(TextUtils.isEmpty(password)){
             return false;
         }else {
@@ -77,16 +79,18 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void showSetupPswdDialog(){
-        final SetUpPasswordDialog setupPasswordDialog = new SetUpPasswordDialog(HomeActivity.this);
-        setupPasswordDialog.setCallBack(new SetUpPasswordDialog.MyCallBack(){
+        final SetupPasswordDialog setupPasswordDialog = new SetupPasswordDialog(HomeActivity.this);
+        setupPasswordDialog.setCallBack(new SetupPasswordDialog.MyCallBack(){
             @Override
             public void ok() {
                 String firstPwsd = setupPasswordDialog.mFirstPWDET.getText().toString().trim();
                 String affirmPwsd = setupPasswordDialog.mAffirmET.getText().toString().trim();
                 if(!TextUtils.isEmpty(firstPwsd) && !TextUtils.isEmpty(affirmPwsd)){
                     if (firstPwsd.equals(affirmPwsd)){
+                        //两次密码一致，储存密码
                         savePswd(affirmPwsd);
                         setupPasswordDialog.dismiss();
+                        //显示输入密码对话框
                         showInterPswdDialog();
                     }else {
                         Toast.makeText(HomeActivity.this,"两次密码不一致！", Toast.LENGTH_LONG).show();
@@ -106,6 +110,9 @@ public class HomeActivity extends AppCompatActivity {
         setupPasswordDialog.show();
     }
 
+    /*
+        弹出输入密码对话框，本方法需要完成“手机防盗模块”之后才能启用
+    */
     private void showInterPswdDialog(){
         final String password = getPassword();
         final InterPasswordDialog mInPswdDialog = new InterPasswordDialog(HomeActivity.this);
@@ -113,19 +120,18 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void confirm() {
                 if(TextUtils.isEmpty(mInPswdDialog.getPassword())){
-                    Toast.makeText(HomeActivity.this,"密码不能为空",Toast.LENGTH_LONG).show();
+                    Toast.makeText(HomeActivity.this,"密码不能为空", 0).show();
                 }else if (password.equals(MD5Utils.encode(mInPswdDialog.getPassword()))){
                     mInPswdDialog.dismiss();
-                    startActivity(LostFindActivity.class);
                     Toast.makeText(HomeActivity.this,"允许进入手机防盗模块", Toast.LENGTH_LONG).show();
                 }else{
                     mInPswdDialog.dismiss();
-                    Toast.makeText(HomeActivity.this,"密码有误请重新输入", Toast.LENGTH_LONG).show();
+                    Toast.makeText(HomeActivity.this,"密码有误请重新输入", 0).show();
                 }
             }
 
             @Override
-            public void cancle() {
+            public void cancel() {
                 mInPswdDialog.dismiss();
             }
         });
@@ -133,12 +139,19 @@ public class HomeActivity extends AppCompatActivity {
         mInPswdDialog.show();
     }
 
+    /*
+    保存密码，本方法需要完成“手机防盗模块”之后才能启用
+    */
     private void savePswd(String affirmPwsd){
         SharedPreferences.Editor edit = mSharedPreferences.edit();
+        //为防止用户隐私被泄露，因此需要加密密码
         edit.putString("PhoneAntiTheftPWD", MD5Utils.encode(affirmPwsd));
         edit.commit();
     }
 
+    /*
+    获取密码
+    */
     private String getPassword(){
         String password = mSharedPreferences.getString("PhoneAntiTheftPWD",null);
         if(TextUtils.isEmpty(password)){
