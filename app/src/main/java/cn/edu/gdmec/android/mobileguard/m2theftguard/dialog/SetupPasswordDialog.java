@@ -15,6 +15,7 @@ import cn.edu.gdmec.android.mobileguard.R;
  * Created by LT on 2017/9/26.
  */
 
+
 public class SetupPasswordDialog extends Dialog implements View.OnClickListener {
     private TextView mTitleTv;
     public EditText mFirstPWDET;

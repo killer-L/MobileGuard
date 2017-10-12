@@ -52,7 +52,9 @@ public class HomeActivity extends AppCompatActivity {
     public void startActivity(Class<?> cls){
         Intent intent = new Intent(HomeActivity.this,cls);
         startActivity(intent);
+
     }
+
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event){
