@@ -12,7 +12,7 @@ import android.widget.TextView;
 import cn.edu.gdmec.android.mobileguard.R;
 
 /**
- * Created by LT on 2017/9/26.
+ * Created by killer on 2017/10/9.
  */
 
 public class SetupPasswordDialog extends Dialog implements View.OnClickListener {
@@ -45,16 +45,13 @@ public class SetupPasswordDialog extends Dialog implements View.OnClickListener 
         }
     }
 
-    public void initView(){
-        mTitleTv = findViewById(R.id.tv_setuppwd_title);
-        mFirstPWDET = findViewById(R.id.et_firstpwd);
-        mAffirmET = findViewById(R.id.et_affirm_password);
+    private void initView(){
+        mTitleTv = (TextView) findViewById(R.id.tv_setuppwd_title);
+        mFirstPWDET = (EditText) findViewById(R.id.et_firstpwd);
+        mAffirmET = (EditText)findViewById(R.id.et_affirm_password);
         findViewById(R.id.btn_ok).setOnClickListener(this);
         findViewById(R.id.btn_cancle).setOnClickListener(this);
-        /*Button btnOk = findViewById(R.id.btn_ok);
-        btnOk.setOnClickListener(this);
-        Button btnCancle = findViewById(R.id.btn_cancle);
-        btnCancle.setOnClickListener(this);*/
+
     }
 
     public void setTitle(String title){
