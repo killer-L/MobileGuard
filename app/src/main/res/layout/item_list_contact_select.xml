@@ -1,25 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="#10000000"
-    android:orientation="vertical"
-    >
-    <View
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:id="@+id/view1"
-        android:layout_centerVertical="true"
-        android:layout_margin="15dp"
-        android:background="@drawable/contact_icon"
-        />
-=======
->>>>>>> 8d5b340909dc5ebe38957b1bdeddc64d28dd3680
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
@@ -32,10 +12,6 @@
         android:layout_centerVertical="true"
         android:layout_margin="15dp"
         android:background="@drawable/contact_icon" />
-<<<<<<< HEAD
-=======
->>>>>>> origin/master
->>>>>>> 8d5b340909dc5ebe38957b1bdeddc64d28dd3680
     <TextView
         android:id="@+id/tv_name"
         style="@style/textview16sp"
@@ -51,14 +27,4 @@
         android:layout_marginTop="10dp"
         android:textColor="@color/purple"
         />
-<<<<<<< HEAD
-
-
-=======
-<<<<<<< HEAD
-=======
-
-
->>>>>>> origin/master
->>>>>>> 8d5b340909dc5ebe38957b1bdeddc64d28dd3680
 </RelativeLayout>
