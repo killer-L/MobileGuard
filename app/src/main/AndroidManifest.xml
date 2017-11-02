@@ -62,6 +62,7 @@
 
         <receiver
             android:name=".m2theftguard.receiver.MyDeviceAdminReceiver"
+            android:permission="android.permission.BIND_DEVICE_ADMIN"
             android:enabled="true"
             android:exported="true">
             <meta-data
