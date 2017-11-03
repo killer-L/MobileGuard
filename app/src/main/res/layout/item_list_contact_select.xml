@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<<<<<<< HEAD
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
@@ -14,6 +15,20 @@
         android:layout_margin="15dp"
         android:background="@drawable/contact_icon"
         />
+=======
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#10000000">
+    <View
+        android:id="@+id/view1"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_centerVertical="true"
+        android:layout_margin="15dp"
+        android:background="@drawable/contact_icon" />
+>>>>>>> origin/master
     <TextView
         android:id="@+id/tv_name"
         style="@style/textview16sp"
@@ -29,4 +44,9 @@
         android:layout_marginTop="10dp"
         android:textColor="@color/purple"
         />
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> origin/master
 </RelativeLayout>

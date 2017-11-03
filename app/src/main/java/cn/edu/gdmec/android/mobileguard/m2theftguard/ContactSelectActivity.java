@@ -17,6 +17,7 @@ import cn.edu.gdmec.android.mobileguard.m2theftguard.adapter.ContactAdapter;
 import cn.edu.gdmec.android.mobileguard.m2theftguard.entity.ContactInfo;
 import cn.edu.gdmec.android.mobileguard.m2theftguard.utils.ContactInfoParser;
 
+<<<<<<< HEAD
 /**
  * Created by killer on 2017/10/19.
  */
@@ -30,11 +31,23 @@ public class ContactSelectActivity extends AppCompatActivity implements View.OnC
             switch (msg.what){
                 case 10:
                     if (systemContacts !=null){
+=======
+public class ContactSelectActivity extends AppCompatActivity implements View.OnClickListener{
+    private ListView mListView;
+    private ContactAdapter adapter;
+    private List<ContactInfo> systemContacts;
+    Handler mHandler = new Handler() {
+        public void handleMessage(android.os.Message msg){
+            switch (msg.what) {
+                case 10:
+                    if(systemContacts != null){
+>>>>>>> origin/master
                         adapter = new ContactAdapter(systemContacts,ContactSelectActivity.this);
                         mListView.setAdapter(adapter);
                     }
                     break;
             }
+<<<<<<< HEAD
         };
     };
     @Override
@@ -51,16 +64,45 @@ public class ContactSelectActivity extends AppCompatActivity implements View.OnC
         findViewById(R.id.rl_titlebar).setBackgroundColor(
                 getResources().getColor(R.color.purple));
         mListView = (ListView) findViewById(R.id.lv_contact);
+=======
+        }
+    };
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_contact_select);
+        initView();
+    }
+
+    private void initView(){
+        ((TextView) findViewById(R.id.tv_title)).setText("选择联系人");
+        ImageView mLeftImgv = (ImageView) findViewById(R.id.imgv_leftbtn);
+        mLeftImgv.setOnClickListener(this);
+        mLeftImgv.setImageResource(R.drawable.back);
+        //设置导航栏颜色
+        findViewById(R.id.rl_titlebar).setBackgroundColor(getResources().getColor(R.color.purple));
+        mListView = (ListView)findViewById(R.id.lv_contact);
+>>>>>>> origin/master
         new Thread(){
             public void run(){
                 systemContacts = ContactInfoParser.getSystemContact(ContactSelectActivity.this);
                 systemContacts.addAll(ContactInfoParser.getSimContacts(ContactSelectActivity.this));
                 mHandler.sendEmptyMessage(10);
+<<<<<<< HEAD
             };
         }.start();
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> parent,View view,int position,long id){
+=======
+            }
+        }.start();
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+>>>>>>> origin/master
                 ContactInfo item = (ContactInfo)adapter.getItem(position);
                 Intent intent = new Intent();
                 intent.putExtra("phone",item.phone);
@@ -68,8 +110,13 @@ public class ContactSelectActivity extends AppCompatActivity implements View.OnC
                 finish();
             }
         });
+<<<<<<< HEAD
 
     }
+=======
+    }
+
+>>>>>>> origin/master
     @Override
     public void onClick(View view) {
         switch (view.getId()){
