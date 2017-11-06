@@ -8,12 +8,9 @@
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.SEND_SMS" />
-<<<<<<<<< Temporary merge branch 1
-=========
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
     <uses-permission android:name="android.permission.READ_SMS" />
->>>>>>>>> Temporary merge branch 2
 
 
     <application
@@ -50,8 +47,6 @@
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
-<<<<<<<<< Temporary merge branch 1
-=========
 
         <service
             android:name=".m2theftguard.service.GPSLocationService"
@@ -78,7 +73,6 @@
             </intent-filter>
         </receiver>
 
->>>>>>>>> Temporary merge branch 2
     </application>
 
 </manifest>
