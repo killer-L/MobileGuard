@@ -19,7 +19,7 @@ public class ContactAdapter extends BaseAdapter{
 
     private List<ContactInfo> contactInfos;
     private Context context;
-    public ContactAdapter(List<ContactInfo> contactInfos,Context context){
+    public ContactAdapter(List<ContactInfo> contactInfos, Context context){
         super();
         this.contactInfos = contactInfos;
         this.context = context;
