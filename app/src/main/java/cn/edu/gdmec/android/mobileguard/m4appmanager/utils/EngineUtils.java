@@ -50,4 +50,7 @@ public class EngineUtils {
             Toast.makeText(context,"系统应用无法卸载",Toast.LENGTH_LONG).show();
         }
     }
+    public static void showApplicationInfo(Context context,AppInfo appInfo){
+        
+    }
 }
