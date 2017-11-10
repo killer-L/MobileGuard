@@ -15,7 +15,14 @@ public class AppInfo {
     public boolean isInRoom;
     public boolean isUserApp;
     public boolean isSelected=false;
-
+    /**版本号*/
+    public String versionName;
+    /**安装时间*/
+    public long firstInstallTime;
+    /**签名信息*/
+    public String signature;
+    /**权限信息*/
+    public String requestedPermissions;
     public String getAppLocation(boolean isInRoom){
         if (isInRoom){
             return "手机内存";
