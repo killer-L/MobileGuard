@@ -13,7 +13,7 @@ public class AntiVirusDao {
     private static String dbname;
     public AntiVirusDao(Context context){
         this.context = context;
-        dbname = "/data/data"+context.getPackageName()+"/files/antivirus.db";
+        dbname = "/data/data/"+context.getPackageName()+"/files/antivirus.db";
 
     }
     public String checkVirus(String md5){
