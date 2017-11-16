@@ -90,7 +90,7 @@ public class VirusScanSpeedActivity extends AppCompatActivity implements View.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_virus_scan_speed);
         pm = getPackageManager();
-        mSP = getSharedPreferences("cofig",MODE_PRIVATE);
+        mSP = getSharedPreferences("config",MODE_PRIVATE);
         initView();
         scanVirus();
     }
