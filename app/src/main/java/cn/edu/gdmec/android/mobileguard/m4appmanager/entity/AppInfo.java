@@ -23,6 +23,8 @@ public class AppInfo {
     public String signature;
     /**权限信息*/
     public String requestedPermissions;
+//    /*activity信息*/
+//    public String activityP;
     public String getAppLocation(boolean isInRoom){
         if (isInRoom){
             return "手机内存";
