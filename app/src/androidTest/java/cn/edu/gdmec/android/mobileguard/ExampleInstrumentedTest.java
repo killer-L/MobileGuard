@@ -13,7 +13,6 @@ import android.support.test.uiautomator.UiObjectNotFoundException;
 import android.support.test.uiautomator.UiScrollable;
 import android.support.test.uiautomator.UiSelector;
 import android.support.test.uiautomator.Until;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -24,13 +23,16 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import static java.lang.Thread.sleep;
 import static org.hamcrest.core.IsNull.notNullValue;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 
 @RunWith(AndroidJUnit4.class)
 @SdkSuppress(minSdkVersion = 18)
@@ -72,7 +74,7 @@ public class ExampleInstrumentedTest {
                 LAUNCH_TIMEOUT);
     }
 
-    public boolean waitForUiObject(UiSelector selector,double timeOut) {//等待对象出现
+    public boolean waitForUiObject(UiSelector selector, double timeOut) {//等待对象出现
         Date start = new Date();
         boolean result = false;
         while(!result){
@@ -379,7 +381,7 @@ public class ExampleInstrumentedTest {
     public void t15BlacknameListViewScroll() throws Exception {
         UiObject result = mDevice.findObject(new UiSelector().textStartsWith("通讯卫士"));
         result.clickAndWaitForNewWindow();
-        UiScrollable  blackList = new UiScrollable(new UiSelector().className("android.widget.ListView"));
+        UiScrollable blackList = new UiScrollable(new UiSelector().className("android.widget.ListView"));
         result = blackList.getChildByInstance(new UiSelector().className("android.widget.TextView"), 0);
         str = result.getText();
         mDevice.swipe(200,600,200,200,50);
@@ -459,7 +461,7 @@ public class ExampleInstrumentedTest {
             throw new Exception("Can't get app request permissions.");
         }
     }
-    @Test
+    //@Test
     public void t21VirusScan() throws Exception {
         result = mDevice.findObject(new UiSelector().textStartsWith("激活此设备管理员"));
         result.clickAndWaitForNewWindow();
@@ -472,7 +474,7 @@ public class ExampleInstrumentedTest {
             throw new Exception("Can't open VirusScan Activity.");
         }
     }
-    @Test
+    //@Test
     public void t22VirusDbUpdate() throws Exception {
         result = mDevice.findObject(new UiSelector().textStartsWith("手机杀毒"));
         result.clickAndWaitForNewWindow();
@@ -484,7 +486,7 @@ public class ExampleInstrumentedTest {
         }
     }
 
-    @Test
+    //@Test
     public void t23StopAndRestartScan() throws Exception {
         result = mDevice.findObject(new UiSelector().textStartsWith("手机杀毒"));
         result.clickAndWaitForNewWindow();
@@ -492,11 +494,48 @@ public class ExampleInstrumentedTest {
         result.clickAndWaitForNewWindow();
         result = mDevice.findObject(new UiSelector().className("android.widget.Button"));
         result.clickAndWaitForNewWindow();
-        UiScrollable  appList = new UiScrollable(new UiSelector().className("android.widget.ListView"));
+        UiScrollable appList = new UiScrollable(new UiSelector().className("android.widget.ListView"));
         appList.flingToBeginning(5);
         UiObject result = appList.getChildByText(new UiSelector().className("android.widget.TextView"),"App1(课程测试案例)",true);
         if(!result.exists()){
             throw new Exception("Can't find virus.");
+        }
+    }
+
+    @Test
+    public void t24EnterCleanCache() throws Exception {
+        result = mDevice.findObject(new UiSelector().textStartsWith("激活此设备管理员"));
+        result.clickAndWaitForNewWindow();
+        result = mDevice.findObject(new UiSelector().textStartsWith("缓存清理"));
+        result.clickAndWaitForNewWindow();
+        result = mDevice.findObject(new UiSelector().textStartsWith("缓存扫描"));
+        if(!result.exists()){
+            throw new Exception("Can't enter CacheScanActivity.");
+        }
+    }
+    @Test
+    public void t25ScanCache() throws Exception {
+        result = mDevice.findObject(new UiSelector().textStartsWith("缓存清理"));
+        result.clickAndWaitForNewWindow();
+        sleep(5000);
+        result = mDevice.findObject(new UiSelector().textStartsWith("已扫描"));
+        str = result.getText();
+        System.out.println(str);
+        if(!result.exists()){
+            throw new Exception("Can't enter CacheScanActivity.");
+        }
+    }
+    @Test
+    public void t26CleanCache() throws Exception {
+        result = mDevice.findObject(new UiSelector().textStartsWith("缓存清理"));
+        result.clickAndWaitForNewWindow();
+        sleep(5000);
+        result = mDevice.findObject(new UiSelector().className("android.widget.Button"));
+        result.clickAndWaitForNewWindow();
+        result = mDevice.findObject(new UiSelector().textStartsWith("成功清理"));
+        str = result.getText();
+        if(!result.exists()){
+            throw new Exception("Can't enter CacheScanActivity.");
         }
     }
 }
