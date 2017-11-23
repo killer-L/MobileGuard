@@ -28,12 +28,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".m1home.HomeActivity">
+        <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+        </activity>
+        <activity android:name=".m1home.HomeActivity">
         </activity>
         <activity android:name=".m2theftguard.LostFindActivity">
         </activity>
@@ -104,6 +106,16 @@
         <activity android:name=".m4appmanager.AppManagerActivity"></activity>
         <activity android:name=".m5virusscan.VirusScanActivity"></activity>
         <activity android:name=".m5virusscan.VirusScanSpeedActivity"></activity>
+
+        <provider
+            android:authorities="com.example.chenfengyao.installapkdemo"
+            android:name="android.support.v4.content.FileProvider"
+            android:grantUriPermissions="true"
+            android:exported="false">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_path" />
+        </provider>
 
 
 
