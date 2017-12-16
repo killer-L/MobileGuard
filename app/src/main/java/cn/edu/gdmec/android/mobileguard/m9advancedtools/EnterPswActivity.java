@@ -19,6 +19,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import cn.edu.gdmec.android.mobileguard.App;
 import cn.edu.gdmec.android.mobileguard.R;
 import cn.edu.gdmec.android.mobileguard.m2theftguard.utils.MD5Utils;
 
@@ -37,8 +38,7 @@ public class EnterPswActivity extends Activity implements OnClickListener{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView( R.layout.activity_enter_psw);
+            setContentView( R.layout.activity_enter_psw);
         sp = getSharedPreferences("config", MODE_PRIVATE);
         password = sp.getString("PhoneAntiTheftPWD", null);
         Intent intent = getIntent();
@@ -81,7 +81,7 @@ public class EnterPswActivity extends Activity implements OnClickListener{
                         if(MD5Utils.encode(inputpsw).equals(password)){
                             //发送自定义的广播消息。
                             Intent intent = new Intent();
-                            intent.setAction("cn.itcast.mobliesafe.applock");
+                            intent.setAction(App.APPLOCK_ACTION);
                             intent.putExtra("packagename",packagename);
                             sendBroadcast(intent);
                             finish();

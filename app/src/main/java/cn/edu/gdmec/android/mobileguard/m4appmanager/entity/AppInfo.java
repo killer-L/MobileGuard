@@ -24,7 +24,7 @@ public class AppInfo {
     /**权限信息*/
     public String requestedPermissions;
 //    /*activity信息*/
-//    public String activityP;
+      public String activities;
     public String getAppLocation(boolean isInRoom){
         if (isInRoom){
             return "手机内存";
@@ -32,4 +32,5 @@ public class AppInfo {
             return "外部存储";
         }
     }
+    public boolean isLock;
 }

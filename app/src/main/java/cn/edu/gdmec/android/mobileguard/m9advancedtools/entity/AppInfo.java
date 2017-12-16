@@ -15,4 +15,5 @@ public class AppInfo{
     public String apkPath;
     /**应用程序是否加锁*/
     public boolean isLock;
+
 }

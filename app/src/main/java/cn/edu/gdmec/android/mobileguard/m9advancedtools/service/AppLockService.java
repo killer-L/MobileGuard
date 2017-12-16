@@ -14,6 +14,7 @@ import android.os.IBinder;
 
 import java.util.List;
 
+import cn.edu.gdmec.android.mobileguard.App;
 import cn.edu.gdmec.android.mobileguard.m9advancedtools.EnterPswActivity;
 import cn.edu.gdmec.android.mobileguard.m9advancedtools.db.dao.AppLockDao;
 
@@ -21,7 +22,7 @@ public class AppLockService extends Service {
     /** 是否开启程序锁服务的标志 */
     private boolean flag = false;
     private AppLockDao dao;
-    private Uri uri = Uri.parse("content://cn.edu.gdmec.android.mobileguard.applock");
+    private Uri uri = Uri.parse(App.APPLOCK_CONTENT_URI);
     private List<String> packagenames;
     private Intent intent;
     private ActivityManager am;
