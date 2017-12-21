@@ -2,8 +2,8 @@ package cn.edu.gdmec.android.mobileguard.m8trafficmonitor;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
@@ -11,12 +11,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import cn.edu.gdmec.android.mobileguard.R;
-
-/**
- * Created by killer on 2017/12/3.
- */
-
-
 
 public class OperatorSetActivity extends AppCompatActivity implements View.OnClickListener{
     private Spinner mSelectSP;
@@ -38,7 +32,8 @@ public class OperatorSetActivity extends AppCompatActivity implements View.OnCli
         mLeftImgv.setOnClickListener(this);
         mLeftImgv.setImageResource(R.drawable.back);
         mSelectSP = (Spinner) findViewById(R.id.spinner_operator_select);
-        mSelectadapter = new ArrayAdapter(this, R.layout.item_spinner_operatorset, R.id.tv_provice, operators);
+        mSelectadapter = new ArrayAdapter(this,
+                R.layout.item_spinner_operatorset, R.id.tv_provice, operators);
         mSelectSP.setAdapter(mSelectadapter);
         findViewById(R.id.btn_operator_finish).setOnClickListener(this);
     }

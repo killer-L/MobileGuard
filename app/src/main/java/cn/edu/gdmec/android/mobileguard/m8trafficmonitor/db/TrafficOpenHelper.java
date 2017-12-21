@@ -1,9 +1,5 @@
 package cn.edu.gdmec.android.mobileguard.m8trafficmonitor.db;
 
-/**
- * Created by killer on 2017/12/3.
- */
-
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;

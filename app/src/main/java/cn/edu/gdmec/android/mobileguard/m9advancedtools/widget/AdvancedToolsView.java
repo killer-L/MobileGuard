@@ -1,9 +1,5 @@
 package cn.edu.gdmec.android.mobileguard.m9advancedtools.widget;
 
-/**
- * Created by lt on 2017/12/3.
- */
-
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
@@ -15,7 +11,7 @@ import android.widget.TextView;
 
 import cn.edu.gdmec.android.mobileguard.R;
 
-public class AdvancedToolsView extends RelativeLayout{
+public class AdvancedToolsView extends RelativeLayout {
 
     private TextView mDesriptionTV;
     private String desc = "";
@@ -26,7 +22,6 @@ public class AdvancedToolsView extends RelativeLayout{
         super(context);
         init(context);
     }
-
     public AdvancedToolsView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         init(context);
@@ -41,9 +36,9 @@ public class AdvancedToolsView extends RelativeLayout{
         mTypedArray.recycle();
         init(context);
     }
-
     /**
      * 控件初始化
+     * @param context
      */
     private void init(Context context) {
         //将资源转化成view对象显示在自己身上
@@ -55,4 +50,3 @@ public class AdvancedToolsView extends RelativeLayout{
         if(drawable != null)mLeftImgv.setImageDrawable(drawable);
     }
 }
-

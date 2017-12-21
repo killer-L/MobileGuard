@@ -5,10 +5,6 @@ import android.content.Context;
 
 import java.util.List;
 
-/**
- * Created by killer on 2017/12/3.
- */
-
 public class SystemInfoUtils {
     /**
      * 判断一个服务是否处于运行状态

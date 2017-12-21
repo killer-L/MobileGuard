@@ -1,9 +1,5 @@
 package cn.edu.gdmec.android.mobileguard.m8trafficmonitor.db.dao;
 
-/**
- * Created by killer on 2017/12/3.
- */
-
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
