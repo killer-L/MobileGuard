@@ -19,8 +19,8 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <!-- 缓存清理部分 -->
     <uses-permission android:name="android.permission.GET_PACKAGE_SIZE"/>
-<uses-permission android:name="android.permission.PACKAGE_USAGE_STATS"
-                 tools:ignore="ProtectedPermissions"/>
+    <!--程序锁部分-->
+    <uses-permission android:name="android.permission.PACKAGE_USAGE_STATS" tools:ignore="ProtectedPermissions"/>
     <application
         android:name=".App"
         android:allowBackup="true"
@@ -29,12 +29,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".m1home.HomeActivity">
+        <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+        </activity>
+        <activity android:name=".m1home.HomeActivity">
         </activity>
         <activity android:name=".m2theftguard.LostFindActivity">
         </activity>
@@ -141,8 +143,10 @@
         <activity android:name=".m9advancedtools.NumBelongtoActivity"/>
         <activity android:name=".m9advancedtools.SMSBackupActivity"/>
         <activity android:name=".m9advancedtools.SMSReducitionActivity"/>
-        <service android:name=".m9advancedtools.service.AppLockService"
-                 android:persistent="true"/>
+        <service
+            android:name=".m9advancedtools.service.AppLockService"
+            android:enabled="true"
+            android:exported="true" />
     </application>
 
 </manifest>

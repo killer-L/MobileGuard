@@ -1,5 +1,9 @@
 package cn.edu.gdmec.android.mobileguard.m9advancedtools.utils;
 
+/**
+ * Created by lt on 2017/12/3.
+ */
+
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -12,9 +16,7 @@ import cn.edu.gdmec.android.mobileguard.m9advancedtools.entity.AppInfo;
 
 
 public class AppInfoParser{
-    /**
-     * 获取手机里面的所有的应用程序
-     */
+    // 获取手机里面的所有的应用程序
     public static List<AppInfo> getAppInfos(Context context){
         //得到一个java保证的 包管理器。
         PackageManager pm = context.getPackageManager();

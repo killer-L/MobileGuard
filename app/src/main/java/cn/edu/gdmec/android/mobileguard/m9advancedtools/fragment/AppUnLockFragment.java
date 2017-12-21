@@ -24,6 +24,10 @@ import cn.edu.gdmec.android.mobileguard.m9advancedtools.adapter.AppLockAdapter;
 import cn.edu.gdmec.android.mobileguard.m9advancedtools.db.dao.AppLockDao;
 import cn.edu.gdmec.android.mobileguard.m9advancedtools.entity.AppInfo;
 
+/**
+ * Created by lt on 2017/12/3.
+ */
+
 
 public class AppUnLockFragment extends Fragment {
 
@@ -32,7 +36,7 @@ public class AppUnLockFragment extends Fragment {
     List<AppInfo> unlockApps = new ArrayList<AppInfo> ();
     private AppLockAdapter adapter;
     private AppLockDao dao;
-    private Uri uri = Uri.parse("content://cn.edu.gdmec.android.mobileguard.applock");
+    private Uri uri = Uri.parse("content://cn.edu.gdmec.android.mobileguard.m9advancedtools.applock");
     private List<AppInfo> appInfos;
     private Handler mhandler = new Handler(){
         public void handleMessage(Message msg) {
@@ -53,8 +57,7 @@ public class AppUnLockFragment extends Fragment {
     };
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view =  inflater.inflate(R.layout.fragment_appunlock, null);
         mUnLockTV = (TextView) view.findViewById( R.id.tv_unlock);
         mUnLockLV = (ListView) view.findViewById(R.id.lv_unlock);
@@ -83,7 +86,7 @@ public class AppUnLockFragment extends Fragment {
             public void run() {
                 for(AppInfo info : appInfos){
                     if(!dao.find(info.packageName)){
-                        //未加锁
+                        // 未加锁
                         info.isLock = false;
                         aInfos.add(info);
                     }
@@ -102,8 +105,8 @@ public class AppUnLockFragment extends Fragment {
         mUnLockLV.setOnItemClickListener(new AdapterView.OnItemClickListener () {
 
             @Override
-            public void onItemClick(AdapterView<?> parent, View view,
-                                    final int position, long id) {
+            public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
+                //手机安全卫士不能加锁
                 if(unlockApps.get(position).packageName.equals("cn.edu.gdmec.android.mobileguard")){
                     return;
                 }

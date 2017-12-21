@@ -10,7 +10,7 @@ public class MyDeviceAdminReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         // TODO: This method is called when the BroadcastReceiver is receiving
         // an Intent broadcast.
-//        throw new UnsupportedOperationException("Not yet implemented");
+        // throw new UnsupportedOperationException("Not yet implemented");
         //一定要把向导创建的代码删掉，留下一个空方法
     }
 }

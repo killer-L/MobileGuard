@@ -11,11 +11,12 @@ import cn.edu.gdmec.android.mobileguard.m9advancedtools.service.AppLockService;
  * Created by lt on 2017/10/19.
  */
 
-public class BootCompleteReceiver extends BroadcastReceiver{
+public class BootCompleteReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
         ((App)(context.getApplicationContext())).correctSIM();
+        //启动程序锁服务。
         context.startService(new Intent(context,AppLockService.class));
     }
 }

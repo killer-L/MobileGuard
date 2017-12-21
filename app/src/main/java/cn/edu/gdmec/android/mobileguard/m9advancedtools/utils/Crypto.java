@@ -1,5 +1,8 @@
 package cn.edu.gdmec.android.mobileguard.m9advancedtools.utils;
 
+/**
+ * Created by lt on 2017/12/3.
+ */
 
 import android.util.Base64;
 import java.security.SecureRandom;
@@ -9,18 +12,14 @@ import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 
 public class Crypto {
-    /**
-     * 加密一个文本，返回base64编码后的内容。
-     */
+    // 加密一个文本，返回base64编码后的内容。
     public static String encrypt(String seed, String plain) throws Exception {
         byte[] rawKey = getRawKey(seed.getBytes());
         byte[] encrypted = encrypt(rawKey, plain.getBytes());
         return Base64.encodeToString(encrypted, Base64.DEFAULT);
     }
 
-    /**
-     * 解密base64编码后的密文
-     */
+    // 解密base64编码后的密文
     public static String decrypt(String seed, String encrypted)
             throws Exception {
         byte[] rawKey = getRawKey(seed.getBytes());

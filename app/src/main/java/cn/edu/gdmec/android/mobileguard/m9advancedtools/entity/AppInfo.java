@@ -2,6 +2,9 @@ package cn.edu.gdmec.android.mobileguard.m9advancedtools.entity;
 
 import android.graphics.drawable.Drawable;
 
+/**
+ * Created by lt on 2017/12/3.
+ */
 
 public class AppInfo{
 
@@ -15,5 +18,4 @@ public class AppInfo{
     public String apkPath;
     /**应用程序是否加锁*/
     public boolean isLock;
-
 }

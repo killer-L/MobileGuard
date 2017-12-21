@@ -1,5 +1,8 @@
 package cn.edu.gdmec.android.mobileguard.m9advancedtools;
 
+/**
+ * Created by lt on 2017/12/3.
+ */
 
 import android.app.Activity;
 import android.content.Intent;
@@ -19,7 +22,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import cn.edu.gdmec.android.mobileguard.App;
 import cn.edu.gdmec.android.mobileguard.R;
 import cn.edu.gdmec.android.mobileguard.m2theftguard.utils.MD5Utils;
 
@@ -38,7 +40,8 @@ public class EnterPswActivity extends Activity implements OnClickListener{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-            setContentView( R.layout.activity_enter_psw);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        setContentView( R.layout.activity_enter_psw);
         sp = getSharedPreferences("config", MODE_PRIVATE);
         password = sp.getString("PhoneAntiTheftPWD", null);
         Intent intent = getIntent();
@@ -74,14 +77,16 @@ public class EnterPswActivity extends Activity implements OnClickListener{
                 if(TextUtils.isEmpty(inputpsw)){
                     startAnim();
                     //将0改为Toast.LENGTH_LONG
-                    Toast.makeText(this, "请输入密码！", Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, "请输入密码！", Toast.LENGTH_SHORT).show();
                     return;
                 }else{
                     if(!TextUtils.isEmpty(password)){
                         if(MD5Utils.encode(inputpsw).equals(password)){
                             //发送自定义的广播消息。
                             Intent intent = new Intent();
-                            intent.setAction(App.APPLOCK_ACTION);
+                            //content://cn.edu.gdmec.android.mobileguard.applock
+                            //intent.setAction(App.APPLOCK_ACTION);
+                            intent.setAction("cn.edu.gdmec.android.mobileguard.m9advancedtools.applock");
                             intent.putExtra("packagename",packagename);
                             sendBroadcast(intent);
                             finish();
@@ -97,7 +102,7 @@ public class EnterPswActivity extends Activity implements OnClickListener{
     }
 
     private void startAnim() {
-        Animation animation =AnimationUtils.loadAnimation(this, R.anim.shake);
+        Animation animation = AnimationUtils.loadAnimation(this, R.anim.shake);
         mEnterPswLL.startAnimation(animation);
     }
 

@@ -1,6 +1,8 @@
 package cn.edu.gdmec.android.mobileguard.m9advancedtools;
 
-
+/**
+ * Created by lt on 2017/12/3.
+ */
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -95,7 +97,7 @@ public class NumBelongtoActivity extends Activity implements OnClickListener{
                         copyDB(dbName);
                     }
                     //查询数据库
-                    String location = NumBelongtoDao.getLocation(phonenumber);
+                    String location = NumBelongtoDao.getLocation(this,phonenumber);
                     mResultTV.setText("归属地： "+location);
                 }else{
                     //把0改为Toast.LENGTH_LONG
